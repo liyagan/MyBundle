@@ -10,3 +10,12 @@ services:
     Lamp\MyBundle\Controller\:
         resource: '../../Controller'
         public: true
+        tags: ['controller.service_arguments']
+    
+    Lamp\MyBundle\Routing\MLoader:
+        tags: [routing.loader]
+        
+    Lamp\MyBundle\EventListener\RequestListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
+

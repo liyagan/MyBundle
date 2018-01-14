@@ -38,7 +38,18 @@ class EntityService{
         return new Response($this->serializer->serialize($rep->findAll(), 'json'));
     }
     
+    public function getById($entityName, $id) {
+        $rep = $this->entityManager->getRepository($this->getEntityClassName($entityName));
+        return new Response($rep->findBy(array("id" => $id), 'json'));
+    }
     
-    
-    
+    public function getAllEntitiesNames(){
+        $metadata = $this->doctrine->getManager()->getMetadataFactory()->getAllMetadata();
+        $names = array();
+        foreach ($metadata as $classMetadata) {
+            $pathArr = explode("\\", $classMetadata->getName());
+            $names[] = strtolower($pathArr[count($pathArr) - 1]);
+        }
+        return $names;
+    }
 }

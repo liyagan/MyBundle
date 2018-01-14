@@ -3,15 +3,26 @@
 namespace Lamp\MyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function indexAction()
+    
+    private $entityService;
+    
+    public function __construct(EntityService $entityService)
     {
-        return $this->render('LampMyBundle:Default:index.html.twig');
+        $this->entityService = $entityService;
+    }
+
+    public function indexAction($entityName)
+    {
+        return $this->entityService->getAll($entityName);
+    }
+    
+    public function indexActionWithId($entityName,$id)
+    {
+        return $this->entityService->getById($entityName,$id);
     }
 }
