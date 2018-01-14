@@ -1,7 +1,12 @@
 {
     "name": "liya/test_project_bundle",
-    "license": "proprietary",
+    "license" : [
+        "MIT"
+    ],
     "type": "symfony-bundle",
+     "keywords" : [
+        "demo bundle"
+    ],
     "autoload": {
         "psr-4": {
             "Lamp\\MyBundle\\": ""
@@ -24,7 +29,11 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0"
     },
-    "extra": {
-        "branch-alias": null
+     "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "some_version-dev"
+        }
     }
 }
