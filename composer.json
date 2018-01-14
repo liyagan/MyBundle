@@ -4,12 +4,12 @@
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Lamp\\MyBundle\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Lamp\\MyBundle\\": ""
         }
     },
     "require": {

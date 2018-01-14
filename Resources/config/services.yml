@@ -1,17 +1,12 @@
 services:
-  _defaults:
+    _defaults:
     # automatically injects dependencies in your services
-    autowire: true
+        autowire: true
     # automatically registers your services as commands, event subscribers, etc.
-    autoconfigure: true
+        autoconfigure: true
     # this means you cannot fetch services directly from the container via $container->get()
     # if you need to do this, you can override this setting on individual services
-    public: false
-  Lamp\MyBundle\Routing\RestLoader:
-    tags: [routing.loader]
-#    test.example:
-#        class: Test\TestBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-  Lamp\MyBundle\EventListener\RouteMatchListener:
-    tags:
-    - { name: kernel.event_listener, event: kernel.request }
+        public: false
+    Lamp\MyBundle\Controller\:
+        resource: '../../Controller'
+        public: true
