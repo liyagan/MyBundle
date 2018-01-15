@@ -14,7 +14,7 @@ services:
     
     Lamp\MyBundle\Routing\AppLoader:
         tags: [routing.loader]
-        arguments: ['@service_container']
+        
     Lamp\MyBundle\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
