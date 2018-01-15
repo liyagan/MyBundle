@@ -50,11 +50,11 @@ class AppLoader extends Loader
        
         $route1 = new Route($path1, $defaults1, $requirements);
         $route2 = new Route($path2, $defaults2, $requirements);
-        dump($route1);
+        
         $routes->add('entityRoute', $route1);
         $routes->add('entityByIdRoute', $route2);
+        
         $this->loaded = true;
-        dump($routes);
         return $routes;
     }
     

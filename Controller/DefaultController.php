@@ -4,7 +4,6 @@ namespace Lamp\MyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Lamp\MyBundle\Service\EntityService;
-use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -18,7 +17,7 @@ class DefaultController extends Controller
   
     public function indexAction($entityName)
     {
-        return new Response($this->entityService->getAll($entityName));
+        return $this->entityService->getAll($entityName);
     }
     
     public function indexWithIdAction($entityName,$id)
