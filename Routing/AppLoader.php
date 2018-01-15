@@ -27,31 +27,34 @@ class AppLoader extends Loader
         
         $routes = new RouteCollection();
         $entityNames = $this->entityService->getAllEntitiesNames();
-        //if (empty($entityNames)) return $routes;
-       
-        $path1 = '/{entity}/';
-        $path2 = '/{entity}/{id}';
+        
+        if (empty($entityNames)) return $routes;
+        
+        $path1 = '/{entityName}/';
+        $path2 = '/{entityName}/{id}';
         
         $defaults1 = array(
-            '_controller' => 'Lamp\MyBundle\Controller\DefaultController::indexAction'
+            '_controller' => 'LampMyBundle:Default:index'
         );
         $defaults2 = array(
-            '_controller' => 'Lamp\MyBundle\Controller\DefaultController::indexActionWithId'
+            '_controller' => 'LampMyBundle:Default:indexWithId'
         );
+   
         
-        //$regexpNames = $this->entityNamesToRequirements($entityNames);
+        $regexpNames = $this->entityNamesToRequirements($entityNames);
         
         $requirements = array(
             'id' => '\d+',
-            'entityName' => $entityNames,
+            'entityName' => strtolower(strval($regexpNames))
         );
        
         $route1 = new Route($path1, $defaults1, $requirements);
-        $route2 = new Route($path2, $defaults2,$requirements);
-
+        $route2 = new Route($path2, $defaults2, $requirements);
+        dump($route1);
         $routes->add('entityRoute', $route1);
         $routes->add('entityByIdRoute', $route2);
         $this->loaded = true;
+        dump($routes);
         return $routes;
     }
     
@@ -65,6 +68,18 @@ class AppLoader extends Loader
      */
     public function supports($resource, $type = null)
     {
-        return 'app_extra' == $type;
+        return 'extra' == $type;
+    }
+    
+    private function entityNamesToRequirements(array $names)
+    {
+        $requiremets = '';
+        if (empty($names)){
+            return '\\';
+        }
+        foreach ($names as $name) {
+            $requiremets .= $name . '|';
+        }
+        return substr($requiremets, 0, -1);
     }
 }

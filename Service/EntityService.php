@@ -20,13 +20,16 @@ class EntityService{
     public function getEntityClassName($entityName)
     {
         $md = $this->entityManager->getMetadataFactory()->getAllMetadata();
+        //dump($md);
         $className = null;
         foreach ($md as $classData) {
             $pathArray = explode("\\", $classData->getName());
-            if ($entityName === $pathArray[count($pathArray) - 1]) {
+            if ($entityName === strtolower($pathArray[count($pathArray) - 1])) {
                 $className = $classData->getName();
             }
+            
         }
+        //dump($className);
         return $className;
     }
 
@@ -34,7 +37,6 @@ class EntityService{
      * get list of all (specific) enities
      */
     public function getAll($entityName) {
-        
         $rep = $this->entityManager->getRepository($this->getEntityClassName($entityName));
         return new Response($this->serializer->serialize($rep->findAll(), 'json'));
     }
@@ -53,6 +55,5 @@ class EntityService{
         }
         return $names;
     }
-    
     
 }
