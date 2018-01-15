@@ -45,7 +45,7 @@ class EntityService{
     }
     
     public function getAllEntitiesNames(){
-        $metadata = $this->doctrine->getManager()->getMetadataFactory()->getAllMetadata();
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
         $names = array();
         foreach ($metadata as $classMetadata) {
             $pathArr = explode("\\", $classMetadata->getName());

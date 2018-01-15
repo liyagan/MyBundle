@@ -49,8 +49,8 @@ class AppLoader extends Loader
         $route1 = new Route($path1, $defaults1, $requirements);
         $route2 = new Route($path2, $defaults2,$requirements);
 
-        $routes->add('entitiesRoute', $route1);
-        $routes->add('entitieForIdRoute', $route2);
+        $routes->add('entityRoute', $route1);
+        $routes->add('entityByIdRoute', $route2);
         $this->loaded = true;
         return $routes;
     }
@@ -65,6 +65,6 @@ class AppLoader extends Loader
      */
     public function supports($resource, $type = null)
     {
-        return 'app' == $type;
+        return 'app_extra' == $type;
     }
 }

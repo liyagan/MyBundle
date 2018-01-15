@@ -4,7 +4,7 @@
         "MIT"
     ],
     "type": "symfony-bundle",
-     "keywords" : [
+    "keywords" : [
         "demo bundle"
     ],
     "autoload": {
