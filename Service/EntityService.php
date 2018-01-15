@@ -49,7 +49,7 @@ class EntityService{
     
     public function getById($entityName, $id) {
         $rep = $this->entityManager->getRepository($this->getEntityClassName($entityName));
-        return new Response($rep->findBy(array("id" => $id), 'json'));
+        return new Response($this->serializer->serialize($rep->findBy(array("id" => $id)), 'json'));
     }
     
     public function getAllEntitiesNames(){

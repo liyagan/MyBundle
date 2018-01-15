@@ -18,10 +18,10 @@ class DefaultController extends Controller
   
     public function indexAction($entityName)
     {
-        return new Response(json_encode($this->entityService->getAll($entityName)));
+        return new Response($this->entityService->getAll($entityName));
     }
     
-    public function entityByIdAction($entityName,$id)
+    public function indexWithIdAction($entityName,$id)
     {
         return $this->entityService->getById($entityName,$id);
     }
