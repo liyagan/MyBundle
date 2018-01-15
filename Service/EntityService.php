@@ -1,8 +1,9 @@
 <?php
+
 namespace Lamp\MyBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-//use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class EntityService{
     
@@ -52,4 +53,6 @@ class EntityService{
         }
         return $names;
     }
+    
+    
 }

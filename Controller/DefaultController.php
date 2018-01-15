@@ -3,7 +3,7 @@
 namespace Lamp\MyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Lamp\MyBundle\Service\EntityService;
 
 
 class DefaultController extends Controller
