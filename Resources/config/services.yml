@@ -12,7 +12,7 @@ services:
         public: true
         tags: ['controller.service_arguments']
     
-    Lamp\MyBundle\Routing\MLoader:
+    Lamp\MyBundle\Routing\AppLoader:
         tags: [routing.loader]
         
     Lamp\MyBundle\EventListener\RequestListener:
