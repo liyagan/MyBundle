@@ -4,6 +4,9 @@ namespace Lamp\MyBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class EntityService{
     
@@ -12,6 +15,9 @@ class EntityService{
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
+        $normalizers = array(new ObjectNormalizer());
+        $encoders = array(new JsonEncoder());
+        $this->serializer = new Serializer($normalizers, $encoders);
     }
     
     /*
